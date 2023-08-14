@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tragamonegas</title>
+    <link rel="stylesheet" href="disenio.css">
+</head>
+<body>
+    <div class="machine"> 
+        <div class="slot-machine">
+            <div class="line line1">
+                <div class="reel" id="reel11"></div>
+                <div class="reel" id="reel12"></div>
+                <div class="reel" id="reel13"></div>
+            </div>
+            <div class="line line2">
+                <div class="reel" id="reel21"></div>
+                <div class="reel" id="reel22"></div>
+                <div class="reel" id="reel23"></div>
+            </div>
+            <div class="line line3">
+                <div class="reel" id="reel31"></div>
+                <div class="reel" id="reel32"></div>
+                <div class="reel" id="reel33"></div>
+            </div>
+        </div>
+        <div class="jugar">
+            <div id="apuesta">
+                <p id="ap-titulo">Apuesta [devCoins] = 1</p>
+                <div id="ap-botones">
+                    <button class="boton-ap" onclick="apuesta1()">1</button>
+                    <button class="boton-ap" onclick="apuesta2()">2</button>
+                    <button class="boton-ap" onclick="apuesta5()">5</button>
+                    <button class="boton-ap" onclick="apuesta10()">10</button>
+                </div>
+            </div>
+            <div id="cont-boton">
+                <button id="spin-button" onclick="girarRuedas()">GIRAR</button>
+            </div>
+        </div>
+        <div class="saldos">
+            <label class="labels" for="">Ganaste = 100 coins </label>
+            <label class="labels" for="">Saldo = 1000 coins </label>
+        </div>
+        <div class="results">
+            <p id="result">............</p>
+        </div>
+    </div>
+    <script src="manejo.js"></script>
+</body>
+</html>
