@@ -73,9 +73,13 @@ let premio      = 0;
 
 // INICIO
 resultado.textContent   = "Intenta una vez grátis. Dale hacela Girar";
-apuestaVal.textContent  = "Apuesta: "+apuesta+" devcoin/s";
+printApuesta();
 
 // FUNCIONES 
+function printApuesta() {
+  apuestaVal.textContent  = "Apuesta: "+apuesta+" coin/s";
+}
+
 function getRandomSymbol() {
   const randomIndex = Math.floor(Math.random() * symbols.length);
   return symbols[randomIndex];
@@ -152,31 +156,33 @@ function checkWin() {
     // Primero busca 3 💎
     if (symbol1 === symbol2 && symbol2 === symbol3) {
       if (symbol1 === "💎") 
-        {premio = apuesta * DIAMANTESX3; 
-         contDiam_3++; }
+        { premio = apuesta * DIAMANTESX3; 
+          resultado.textContent ="¡¡¡ FABULOSO GANASTE EL PREMIO MAYOR !!!";
+          contDiam_3++;}
       else { premio = apuesta * FIGURASX3;
-            contFig_3++;}
+             resultado.textContent ="¡¡FELICIDADES!! 3 figuras iguales";
+             contFig_3++;}
       saldoDevC += premio;
-      resultado.textContent ="¡FELICIDADES!!! Tres figuras iguales.";
     } else if (symbol1 === symbol2 || symbol2 === symbol3 || symbol1 === symbol3) {
       if ((symbol1 === "💎")&&(symbol2 === "💎") || (symbol2 === "💎")&&(symbol3 === "💎")|| 
             (symbol1 === "💎")&&(symbol3 === "💎")) {
                 premio = apuesta * DIAMANTESX2;
+                resultado.textContent = "¡GENIAL! 2 Diamantes";
                 contDiam_2++; }
       else { premio = apuesta * FIGURASX2;
-              contFig_2++;}
+             resultado.textContent = "¡Ganaste! 2 figuras iguales";
+             contFig_2++;}
       saldoDevC += premio;
-      resultado.textContent = "¡Ganaste! --- Dos figuras iguales.";
     } else {
       premio = 0;
-      resultado.textContent = "Intenta de nuevo, No hubo coincidencias.";
+      resultado.textContent = "Intenta de nuevo, no hubo coincidencias...";
     }
     console.log("Ciclo: "+ciclos+" Premio: "+premio+" Saldo: "+saldoDevC+" "+symbol1+symbol2+symbol3);
     if (ciclos %100 == 0) {
       console.log("Diam3: "+contDiam_3+" Fig3: "+contFig_3+" Diam2: "+contDiam_2+" Fig2: "+contFig_2);
     }
-    miPremio.textContent  = "Ganaste: "+premio+" devcoins";
-    miSaldo.textContent   = "Saldo: "+saldoDevC+" devcoins";    
+    miPremio.textContent  = "Ganaste: "+premio+" coins";
+    miSaldo.textContent   = "Tu saldo: "+saldoDevC+" coins";    
   }
 }
 
@@ -192,28 +198,25 @@ function girarRuedas() {
     giraRueda(rueda3);
     setTimeout(() => {
       spinning = false;
-    }, 1500);
+    }, 2000);
   }
 }
 
-let giraInterval = 0;
-
 function apuesta1() {
   apuesta = 1;
-  apuestaVal.textContent  = "Apuesta: "+apuesta+" devcoin/s";
+  printApuesta();
 }
 function apuesta2() {
-  // GENERA CONTINUO....
-  giraInterval = setInterval(girarRuedas, 2000); // 
-  // apuesta = 2;
+  apuesta = 2;
+  printApuesta();
 }
 function apuesta5() {
-  //apuesta = 5;
-  clearInterval(giraInterval);
+  apuesta = 5;
+  printApuesta();
 }
 function apuesta10() {
   apuesta = 10;
-  apuestaVal.textContent  = "Apuesta: "+apuesta+" devcoin/s";
+  printApuesta();
 }
 
 

@@ -6,6 +6,9 @@ body {
   height: 100vh;
   margin: 0;
   font-family: 'Lucida Sans';
+  /*background-color: lightcyan;*/
+  background: linear-gradient(#0e373064, #86a37e );
+  color: darkblue;
 }
 .machine {
   display: grid;
@@ -28,17 +31,18 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-color: azure;
 }
 
 .line2 {
   border: 5px solid blue;
   border-left: none;
   border-right: none;
-  background-color: rgba(116, 246, 255, 0.288);
+  background-color: rgba(179, 229, 159, 0.575);
 }
 
 .reel {
-  width: 140px;
+  width: 102px;
   height: 60px;
   border: 2px solid grey;
   margin: 1px;
@@ -61,14 +65,15 @@ body {
   padding: 10px;
   margin: 5px;
   background-color: gold;
-  width: 180px;
+  width: 126px;
   text-align: center;
   align-content: center;
 }
 
 .boton-ap {
-  width: 40px
-
+  width: 26px;
+  text-align: left;
+  padding-left: 0;
 }
 
 #cont-boton {
@@ -96,7 +101,7 @@ body {
 }
 
 .saldos {
-  width: 439px;
+  width: 321px;
   border: 10px solid rgba(220, 50, 50, 0.9);
   display: flex;
 }
@@ -112,12 +117,18 @@ body {
 }
 
 .results {
-  width: 439px;
+  width: 321px;
+  height: 80px;
   display: grid;
   border: 10px solid rgba(189, 45, 45, 0.872);
   text-align: center;
+  background-color:rgb(184, 238, 184);
 }
 #result {
-    font-family: 'Lucida Grande';
-    font-size: large;
+  margin-top: 7px;
+  font-family: 'Lucida Grande';
+  font-size: x-large;
+  font-weight: bolder;
+  font-style: oblique;
+  color: red;
 }
