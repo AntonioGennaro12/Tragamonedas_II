@@ -6,7 +6,6 @@ body {
   height: 100vh;
   margin: 0;
   font-family: 'Lucida Sans';
-  /*background-color: lightcyan;*/
   background: linear-gradient(#0e373064, #86a37e );
   color: darkblue;
 }
@@ -42,7 +41,7 @@ body {
 }
 
 .reel {
-  width: 102px;
+  width: 101px;
   height: 60px;
   border: 2px solid grey;
   margin: 1px;
@@ -101,7 +100,7 @@ body {
 }
 
 .saldos {
-  width: 321px;
+  width: 322px;
   border: 10px solid rgba(220, 50, 50, 0.9);
   display: flex;
 }
@@ -117,10 +116,10 @@ body {
 }
 
 .results {
-  width: 321px;
+  width: 322px;
   height: 80px;
   display: grid;
-  border: 10px solid rgba(189, 45, 45, 0.872);
+  border: 10px solid rgba(220, 50, 50, 0.9);
   text-align: center;
   background-color:rgb(184, 238, 184);
 }
