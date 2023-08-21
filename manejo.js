@@ -181,7 +181,7 @@ function checkWin() {
     if (ciclos %100 == 0) {
       console.log("Diam3: "+contDiam_3+" Fig3: "+contFig_3+" Diam2: "+contDiam_2+" Fig2: "+contFig_2);
     }
-    miPremio.textContent  = "Ganaste: "+" "+premio+" coins";
+    miPremio.textContent  = "Ganaste : "+premio+" coins";
     miSaldo.textContent   = "Tu saldo: "+saldoDevC+" coins";    
   }
 }
