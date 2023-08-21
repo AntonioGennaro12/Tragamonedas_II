@@ -181,6 +181,10 @@ function checkWin() {
     if (ciclos %100 == 0) {
       console.log("Diam3: "+contDiam_3+" Fig3: "+contFig_3+" Diam2: "+contDiam_2+" Fig2: "+contFig_2);
     }
+    if (premio > 0 ){
+      miPremio.style.backgroundColor = "darkred";
+      miPremio.style.color = "white";
+    }
     miPremio.textContent  = "Ganaste : "+premio+" coins";
     miSaldo.textContent   = "Tu saldo: "+saldoDevC+" coins";    
   }
@@ -191,6 +195,8 @@ function girarRuedas() {
     ciclos++;
     spinButton.style.color = "yellow";
     resultado.textContent = "Ahí vamos... Suerte!!!";
+    miPremio.style.backgroundColor = "gold";
+    miPremio.style.color = "darkblue";
     spinning = true;
     initRuedas ();
     giraRueda(rueda1);
@@ -198,7 +204,7 @@ function girarRuedas() {
     giraRueda(rueda3);
     setTimeout(() => {
       spinning = false;
-    }, 1000);
+    }, 1800);
   }
 }
 
