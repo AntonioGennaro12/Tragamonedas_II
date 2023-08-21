@@ -54,6 +54,7 @@ let symbols3  = ["🍊", "💎", "🍍"];
 
 // VARIABLES GENERALES
 let spinning = false;
+let stopping = false;
 let symbIndx = 0; 
 let contador = 0;
 
@@ -124,13 +125,18 @@ function muestraRuedas() {
 
 function giraRueda(rueda) { // se llama rueda por rueda 
   let spins = 0;            // y genera un número aleatorio
-  let maxSpins = 40 + Math.floor(Math.random() * 25); // de 40 a 64 vueltas...
+  let maxSpins = 40 + Math.floor(Math.random() * 37); // de 40 a 64 vueltas...
   function doSpin() {       // para luego ir llenado los arrays 
     for(let i=0;i<nro_figuras; i++) {
       rueda[i] = getRandomSymbol(); // va llenando en forma aleatoria todas las posiciones de la rueda (de 8 a 16)
     } // la cantidad de vueltas van de 2,5 a 4 si son de 16 figuras o de 5 a 8 si son de 8 figuras..
     muestraRuedas();
     spins++;
+    if (stopping === true && spinning === true){
+      spins++;
+      spins++;
+    }
+
     if (spins < maxSpins) {
       //console.log("MaxSp: "+maxSpins+" , Spins: "+spins);
       requestAnimationFrame(doSpin);
@@ -149,6 +155,7 @@ function checkWin() {
   if (++contador == 3 ) {
     contador = 0;
     spinButton.style.color = "darkgreen";
+    spinButton.textContent = "GIRAR";
     const symbol1 = symbols2[0];
     const symbol2 = symbols2[1];
     const symbol3 = symbols2[2];
@@ -193,11 +200,13 @@ function checkWin() {
 function girarRuedas() {
   if (!spinning) {
     ciclos++;
-    spinButton.style.color = "yellow";
+    spinButton.style.color = "red";
+    spinButton.textContent = "PARAR";
     resultado.textContent = "Ahí vamos... Suerte!!!";
     miPremio.style.backgroundColor = "gold";
     miPremio.style.color = "darkblue";
     spinning = true;
+    stopping = false;
     initRuedas ();
     giraRueda(rueda1);
     giraRueda(rueda2);
@@ -205,6 +214,13 @@ function girarRuedas() {
     setTimeout(() => {
       spinning = false;
     }, 1800);
+  }
+  else {
+    if (!stopping) {
+      stopping = true;
+      spinButton.style.color = "yellow";
+      spinButton.textContent = " - - - ";
+    }
   }
 }
 
