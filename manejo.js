@@ -78,7 +78,9 @@ printApuesta();
 
 // FUNCIONES 
 function printApuesta() {
-  apuestaVal.textContent  = "Apuesta: "+apuesta+" coin/s";
+  let coin = " coin";
+  if (apuesta > 1) { coin = " coins";}
+  apuestaVal.textContent  = "Apuesta: "+apuesta+coin;
 }
 
 function getRandomSymbol() {
