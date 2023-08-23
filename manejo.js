@@ -44,7 +44,7 @@ for (let i=1;i<symbols.length;i++){
   if (++index >= symbLib.length) {index = 1;}
   symbols[i] = symbLib[index];
 }
-console.log(symbols);
+//console.log(symbols);
 // ARMADO DE LA PANTALLA DE LA MÁQUINA - MUESTRA SOLO 3 LINEAS 
 // SE TOMAN DE LAS 3 RUEDAS EN FROMA ROTATIVA HASTA QUE SE DETENGA LA ÚLTIMA
 // El resultado se evalúa en la 2fa fila (symbols 2)
@@ -155,6 +155,7 @@ function giraRueda(rueda) { // se llama rueda por rueda
 function checkWin() {
   // console.log("entró check "+contador);
   if (++contador == 3 ) {
+    stopping = true;
     contador = 0;
     spinButton.style.color = "darkgreen";
     spinButton.textContent = "GIRAR";
@@ -186,10 +187,12 @@ function checkWin() {
       premio = 0;
       resultado.textContent = "Intenta de nuevo, no hubo coincidencias...";
     }
-    console.log("Ciclo: "+ciclos+" Premio: "+premio+" Saldo: "+saldoDevC+" "+symbol1+symbol2+symbol3);
-    if (ciclos %100 == 0) {
-      console.log("Diam3: "+contDiam_3+" Fig3: "+contFig_3+" Diam2: "+contDiam_2+" Fig2: "+contFig_2);
-    }
+    
+    // console.log("Ciclo: "+ciclos+" Premio: "+premio+" Saldo: "+saldoDevC+" "+symbol1+symbol2+symbol3);
+    // if (ciclos %100 == 0) {
+    //   console.log("Diam3: "+contDiam_3+" Fig3: "+contFig_3+" Diam2: "+contDiam_2+" Fig2: "+contFig_2);
+    // }
+
     if (premio > 0 ){
       miPremio.style.backgroundColor = "darkred";
       miPremio.style.color = "white";
@@ -207,14 +210,14 @@ function girarRuedas() {
     resultado.textContent = "Ahí vamos... Suerte!!!";
     miPremio.style.backgroundColor = "gold";
     miPremio.style.color = "darkblue";
-    spinning = true;
     stopping = false;
+    spinning = true;
     initRuedas ();
     giraRueda(rueda1);
     giraRueda(rueda2);
     giraRueda(rueda3);
     setTimeout(() => {
-      spinning = false;
+      nextTry();
     }, 1800);
   }
   else {
@@ -224,6 +227,11 @@ function girarRuedas() {
       spinButton.textContent = " - - - ";
     }
   }
+}
+
+function nextTry() {
+    stopping = true;
+    spinning = false;
 }
 
 function apuesta1() {
