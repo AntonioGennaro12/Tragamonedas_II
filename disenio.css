@@ -13,7 +13,7 @@ body {
   display: grid;
   border: 15px solid rgb(189, 45, 45);
   border-radius: 10px;
-  width: 325px;
+  width: 326px;
 }
 
 .slot-machine {
@@ -63,8 +63,9 @@ body {
   background-color: gold;
   width: 100%;
   font-size: 14px;
-  /*text-align: center;
-  align-content: center;*/
+  text-align: center;
+  text-indent: -7px;
+  /*align-content: center;*/
 }
 
 #ap-botones {
@@ -134,4 +135,8 @@ body {
   font-weight: bolder;
   font-style: oblique;
   color: red;
+}
+
+#cargar-saldo {
+  display: "none";
 }

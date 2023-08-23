@@ -1,5 +1,8 @@
 // MAQUINA TRAGAMONEDAS II - Release 2 (3 x 24 figuras)
 // con 16 figuras distintas tomadas de una librería de 32...
+const miMaquina   = document.querySelector("#mi-maquina");
+const contCarSal  = document.querySelector("#cargar-saldo");
+//
 const apuestaVal  = document.querySelector("#ap-valor");
 const resultado   = document.querySelector("#result");
 const miPremio    = document.querySelector("#mi-premio");
@@ -72,9 +75,17 @@ let saldoPesos  = 0;
 let apuesta     = 1;
 let premio      = 0;
 
+// CARGA DE SALDO
+let clickCarga = 0;
+
+
 // INICIO
+contCarSal.style.display = "none";
+miMaquina.style.display = "grid";
+resultado.style.color = "green";
 resultado.textContent   = "Intenta una vez grátis. Dale hacela Girar";
 printApuesta();
+saldoDevC = 1;
 
 // FUNCIONES 
 function printApuesta() {
@@ -167,9 +178,11 @@ function checkWin() {
     if (symbol1 === symbol2 && symbol2 === symbol3) {
       if (symbol1 === "💎") 
         { premio = apuesta * DIAMANTESX3; 
+          resultado.style.color = "darkmagenta";
           resultado.textContent ="¡¡¡ FABULOSO GANASTE EL PREMIO MAYOR !!!";
           contDiam_3++;}
       else { premio = apuesta * FIGURASX3;
+             resultado.style.color = "darkgreen";
              resultado.textContent ="¡¡FELICIDADES!! 3 figuras iguales";
              contFig_3++;}
       saldoDevC += premio;
@@ -177,14 +190,17 @@ function checkWin() {
       if ((symbol1 === "💎")&&(symbol2 === "💎") || (symbol2 === "💎")&&(symbol3 === "💎")|| 
             (symbol1 === "💎")&&(symbol3 === "💎")) {
                 premio = apuesta * DIAMANTESX2;
+                resultado.style.color = "lightgreen";
                 resultado.textContent = "¡GENIAL! 2 Diamantes";
                 contDiam_2++; }
       else { premio = apuesta * FIGURASX2;
+             resultado.style.color = "blue";
              resultado.textContent = "¡Ganaste! 2 figuras iguales";
              contFig_2++;}
       saldoDevC += premio;
     } else {
       premio = 0;
+      resultado.style.color = "violet";
       resultado.textContent = "Intenta de nuevo, no hubo coincidencias...";
     }
     
@@ -204,6 +220,16 @@ function checkWin() {
 
 function girarRuedas() {
   if (!spinning) {
+    if ((saldoDevC > 0) && (saldoDevC < apuesta)) {
+      resultado.style.color = "darkred";
+      resultado.textContent  = 'Saldo insuficiente para esa apuesta, cambia tu apuesta...';
+      return;
+    }
+    if (saldoDevC <= 0) {
+      resultado.style.color = "red";
+      resultado.textContent  = 'No tienes saldo! .. Presiona "Tu saldo" para recargar...';
+      return;
+    }
     ciclos++;
     spinButton.style.color = "red";
     spinButton.textContent = "PARAR";
@@ -251,5 +277,33 @@ function apuesta10() {
   printApuesta();
 }
 
+function nextTrySal() {
+  stopping = true;
+  spinning = false;
+  contCarSal.style.display = "none";
+  miMaquina.style.display = "grid";
+  clickCarga = 0;
+}
 
+
+function cargarSaldo () {
+  if (++clickCarga == 2) {
+    miMaquina.style.display = "none";
+    contCarSal.style.display = "flex";
+    saldoDevC = 100;
+    miSaldo.textContent   = "Tu saldo: "+saldoDevC+" coins";   
+    contCarSal.textContent = "TE CARGAMOS 100 COINS de ONDA"; 
+    resultado.style.color = "green";
+    resultado.textContent   = "Ahora sí... Dale hacela Girar";
+    setTimeout(() => {
+      nextTrySal();
+    }, 1800);
+
+  }
+  else {
+    resultado.style.color = "red";
+    resultado.textContent   = "Quieres cargar Saldo? Presiona de nuevo...";
+  }
+  
+}
 
