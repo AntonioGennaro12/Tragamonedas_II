@@ -21,9 +21,9 @@ const spinButton  = document.querySelector("#spin-button");
 
 // DEFINICIÓN DE PREMIOS (la probabilidad al 98,5%, el 1,5% queda para la máquina)
 // el premio Multiplica el valor de la apuesta
-const DIAMANTESX3 = 3000; // 1/(24*24*24)   
-const FIGURASX3   = 130;  // (1/(24*24) - (1/(24*24*24)) 
-const DIAMANTESX2 = 40;   // 3*23/(24*24*24)
+const DIAMANTESX3 = 3500; // 1/(24*24*24)   
+const FIGURASX3   = 150;  // (1/(24*24) - (1/(24*24*24)) 
+const DIAMANTESX2 = 50;   // 3*23/(24*24*24)
 const FIGURASX2   = 2;    // 3/24 - 3*23/(24*24*24)
 // Se eligieron 24 figuras para poder pagar un premio mínimo de 2 veces lo apostado cuando 
 // salen dos figuras iguales por lo que el apostador recupera la apuesta y gana otro tanto.
@@ -298,12 +298,10 @@ function cargarSaldo () {
     setTimeout(() => {
       nextTrySal();
     }, 1800);
-
   }
   else {
     resultado.style.color = "red";
     resultado.textContent   = "Quieres cargar Saldo? Presiona de nuevo...";
   }
-  
 }
 

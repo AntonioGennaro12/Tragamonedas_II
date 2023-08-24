@@ -140,3 +140,12 @@ body {
 #cargar-saldo {
   display: "none";
 }
+
+#miFormulario {
+  display: "none";
+}
+
+.entra-datos {
+  display: "none";
+  visibility: hidden;
+}
