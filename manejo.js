@@ -190,7 +190,7 @@ function checkWin() {
       if ((symbol1 === "💎")&&(symbol2 === "💎") || (symbol2 === "💎")&&(symbol3 === "💎")|| 
             (symbol1 === "💎")&&(symbol3 === "💎")) {
                 premio = apuesta * DIAMANTESX2;
-                resultado.style.color = "lightgreen";
+                resultado.style.color = "darkturquoise";
                 resultado.textContent = "¡GENIAL! 2 Diamantes";
                 contDiam_2++; }
       else { premio = apuesta * FIGURASX2;

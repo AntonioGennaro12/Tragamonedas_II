@@ -9,6 +9,7 @@ body {
   background: linear-gradient(#0e373064, #86a37e );
   color: darkblue;
 }
+
 .machine {
   display: grid;
   border: 15px solid rgb(189, 45, 45);
